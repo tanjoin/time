@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>時間変換器</title>
+  <meta charset="utf-8">
+  <meta name="description" content="時間に関する返還を行うところ">
+  <meta name="author" content="tanjoin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href=""> -->
+  <!-- <link rel="shortcut icon" href=""> -->
+</head>
+<body>
+  <form action="/action_page.php">
+    Unix time: <input type="text" id="unix_time_form"><br>
+    Result   : <input type="text" id="unix_time_form_result" readonly><br>
+    <input type="button" value="変換" onclick="unixTimeWithForm()">
+  </form>
+  <script>
+  
+  function unixTimeWithForm() {
+    var value = parseInt(document.getElementById('unix_time_form').innerText.replace(',',''));
+    var result = unixTime(value);
+    document.getElementById('unix_time_form_result').innerText = result;
+  };
+  
+  function unixTime(intTime) {
+    var d = undefined;
+    if (intTime) {
+      d = new Date(intTime * 1000);
+    } else {
+      d = new Date();
+    }
+    var year  = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var day  = d.getDate();
+    var hour = ( '0' + d.getHours() ).slice(-2);
+    var min  = ( '0' + d.getMinutes() ).slice(-2);
+    var sec   = ( '0' + d.getSeconds() ).slice(-2);
+    return( year + '/' + month + '/' + day + ' ' + hour + ':' + min + ':' + sec );
+  };
+  
+  </script>
+</body>
+</html>
