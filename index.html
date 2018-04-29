@@ -19,9 +19,9 @@
   <script>
   
   function unixTimeWithForm() {
-    var value = parseInt(document.getElementById('unix_time_form').innerText.replace(',',''));
+    var value = parseInt(document.getElementById('unix_time_form').value.replace(',',''));
     var result = unixTime(value);
-    document.getElementById('unix_time_form_result').innerText = result;
+    document.getElementById('unix_time_form_result').value = result;
   };
   
   function unixTime(intTime) {
