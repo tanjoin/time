@@ -24,7 +24,7 @@
   function unixTimeWithForm() {
     var value = parseInt(document.getElementById('unix_time_form').value.replace(',',''));
     if (!value || value.length == 0) {
-      value = new Date().getTime() / 1000;
+      value = Math.floor(new Date().getTime() / 1000);
       document.getElementById('unix_time_form').value = value;
     }
     var result = unixTime(value);
