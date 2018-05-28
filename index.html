@@ -20,21 +20,20 @@
     </form>
   </div>
   <script>
-  
+
   function unixTimeWithForm() {
     var value = parseInt(document.getElementById('unix_time_form').value.replace(',',''));
+    if (!value || value.length == 0) {
+      value = new Date().getTime() / 1000;
+      document.getElementById('unix_time_form').value = value;
+    }
     var result = unixTime(value);
     document.getElementById('unix_time_form_result').value = result;
     document.getElementById('iso8601_form_result').value = new Date(value).toISOString();
   };
-  
-  function unixTime(intTime) {
-    var d = undefined;
-    if (intTime) {
-      d = new Date(intTime * 1000);
-    } else {
-      d = new Date();
-    }
+
+  function unixTime(value) {
+    var d = new Date(value * 1000);
     var year  = d.getFullYear();
     var month = d.getMonth() + 1;
     var day  = d.getDate();
@@ -43,7 +42,7 @@
     var sec   = ( '0' + d.getSeconds() ).slice(-2);
     return( year + '/' + month + '/' + day + ' ' + hour + ':' + min + ':' + sec );
   };
-  
+
   </script>
 </body>
 </html>
