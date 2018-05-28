@@ -29,7 +29,7 @@
     }
     var result = unixTime(value);
     document.getElementById('unix_time_form_result').value = result;
-    document.getElementById('iso8601_form_result').value = new Date(value).toISOString();
+    document.getElementById('iso8601_form_result').value = new Date(value * 1000).toISOString();
   };
 
   function unixTime(value) {
